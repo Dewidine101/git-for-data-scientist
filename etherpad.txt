@@ -1,0 +1,111 @@
+Welcome to Etherpad!
+
+This pad text is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents!
+
+Get involved with Etherpad at https://etherpad.org
+
+Warning: DirtyDB is used. This is not recommended for production. -- To suppress these warning messages change suppressErrorsInPadText to true in your settings.json
+
+When pushing changes will it change the main file?
+Yes - but it tracks the change with an index that allows you to go back to the version before the changes if you want to.
+So for all changes a new "file" will be created? for each change there is a version of that changes. And what about space? None issue? Or is it just saving the changes and not the entire file?
+Great question! I had the same one when I started. The way it works is that your repo will always have one copy of the file based on the branch and status that you are viewing. The clever part of Git is that it will index all changes so that as you move through your COMMIT history, you can see the file as it was when you made that COMMIT. 
+
+ When will you use branches? Is this for changes that need to be pushed? See pg 49 for  more details. 
+Branches are useful when you want to test ideas for changes that might 'break' a working set of code. When working on a branch - you can make changes without interfering with the other branches. When you have made a change and tested that it works fine, you can then MERGE the two branches together. 
+
+Hello from SEDIQA 
+Hello from Astrid! 
+Hello :) (Anisha)
+HI! (Gavin)
+I wanted to say Ola...Hos then
+Ola - andrew S
+Hello! This is Lize
+
+Hey team!!
+Maphale
+
+Exploring this repo: https://github.com/achael/eht-imaging
+
+Astrid's Git example seems to be for one project, how would you structure it if you have multiple different projects, each with their own data and scripts?
+Good point. That would require a set of repositories for each project. There is no limit to the number of repositories that you can have. The point is that you don't want to have multiple project workflows 'interfering' with another project.
+OK, so a repository is then basically the collection of files that belongs to a project? Yes - like a folder on your computer that also exists in the cloud - which contains everything EXCEPT that which you tell Git to ignore. More on this later! 
+
+
+Yep - not sure about GitHub but in GitLab you can create a group of repositories. for example - our trainings all live in a training group. This course lives under training/git-for-ds - the URL of the repo will reflect the group that the repo lives in
+
+git config --list 
+
+What is the difference between stage and commit?
+When we STAGE a file, we are telling Git that it must track changes to the file in a version history.
+When we COMMIT a file, we are creating the index in the version history at that specific point in time. 
+The steps are repetitive STAGE -> COMMIT -> PUSH. 
+
+To start with SSH - what is the first command? # mkdir $HOME/.ssh? I get a message cannot create directory
+I don't think you will need to. It should already be there. The command you are looking for is the: ssh-keygen ...Ok
+
+@Anisha 
+You need to change directory to Desktop/version_control and then run this command:
+    git init
+Once you have run that, you can run:
+    git status
+    
+Will you pop the output of your terminal after git status down below?
+
+What happens after 
+Indentity added: /home.....
+Are you ok here?
+
+Yay! I get this:
+are you managing to copy? No :(
+    awwww
+    okay - let me help you over the break
+    I am adding the SSH key to github but i think that I am copying the incorrect key. Thank you Astrid :)
+
+If you're interested in understanding more about SSH:
+https://searchsecurity.techtarget.com/definition/Secure-Shell
+
+Can you add any type of file to a repository
+yes! there are some files that you shouldn't add - for example passwords or your private key. In an R-specific context, you don't want to commit your .Renviron file (a file that contains any local environment variables that you specify - e.g. name of a database, database password, etc). I think there might also be limitations around repo size - not sure what these limits are - will need to do some reading
+Typically you commit your code, images and raw data (unless using DVC)
+
+
+
+Glossary 
+
+stage/add
+commit
+push 
+.gitignore
+pull 
+clone
+
+
+Got fatal messge
+The current branch master has no upstream branch. 
+To push the current branch and set the remote as upstream, use
+
+Could you give us a bullet point summary of the steps involved in adding a project folder on our computer to a new GitHub repository?
+(Just to recap)
+Sure! 
+
+To sync a local master branch with remote master branch:
+1. Create empty remote repository on GitHub and copy SSH link from repo
+2. Head to local folder and type git init (you can check that you have a .git file by typing ls -a in the folder) 
+3. Create .gitignore if required and add any files that you don't want to push to your remote repo
+4. Add your files to the staging area with git add (git add . adds everything in the folder - the . means everything) 
+5. Use git status to check that you have files to be committed
+6. Commit your changes to the git history using git commit -m "your commit message here" 
+7. Push your commits to your remote repo using git push origin master 
+8. Refresh remote repo to see changes
+
+Brilliant, thank you! I'm starting to see how it all fits together
+awesome :) it's pretty foreign at first but then finally eventually makes sense
+
+So the command git push origin master updates everything from your computer to the repository, whereas git push origin development only updates the development branch?
+
+A git push command will only push the BRANCH you specify. So both of your examples only push the latest COMMITS from the BRANCH you specify. When you MERGE the changes in the development branch into the master branch, then git push origin master will push those changes to your remote git repo.
+and if you are already on a branch and only use git push it will push to the remote branch that corresponds with the local branch that you are on
+
+Don't forget to bookmark/save this pdf: 
+    https://education.github.com/git-cheat-sheet-education.pdf
